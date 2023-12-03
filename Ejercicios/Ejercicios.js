@@ -12,7 +12,8 @@ function powerfullgril (name, color, superpower) {
     }
     
     this.displayleader = function () {
-            this.isLeader = true
+        
+
             console.log(`${this.name} es la lider`)
     }
 
@@ -25,3 +26,5 @@ const buttercup =  new powerfullgril('Pera', 'verde', 'tierra')
 blossom.displayleader()
 blossom.displayGirls()
 buttercup.displayGirls()
+
+//este cambio es para guardar
