@@ -13,6 +13,7 @@ seleccionarMascotaID.addEventListener('click', PetSelection)
 //sections
 let SecSelectAttack = document.getElementById('Ataque-selection')
 let SecPetSelection = document.getElementById('Macosta-selection')
+let ButReset = document.getElementById('Reset-but')
 //Spans
 let MascotaJugador = document.getElementById('MascotaJugador')
 let MscostaPc = document.getElementById('MacostaEnemigo')
@@ -21,6 +22,12 @@ let CounterVidasPc = document.getElementById('VidasEnemigo')
 //ataques
 let AtaqueJugador
 let AtaquePC
+
+function hideElements() {
+    SecSelectAttack.hidden = true
+    ButReset.hidden = true
+}
+hideElements()
 
 function PetSelection() {
     if(Burner.checked) {
@@ -62,6 +69,7 @@ function PcSelection() {
     alert('El enemigo ha selecionado Rocky')
     }
     SecPetSelection.hidden = true
+    SecSelectAttack.hidden = false
 }
 
 //Ataque Fuego
@@ -139,15 +147,25 @@ function VidasCounter() {
     if(VidasJugador == 0 ) {
         MensajeFinal.innerHTML = "Perdiste"
         document.getElementById('Mensajes').appendChild(MensajeFinal)
-        SecSelectAttack.hidden = true 
+        secAttackDisabled() 
+        ButReset.hidden = false
+        
     }
     else if(VidasPc == 0) {
         MensajeFinal.innerHTML = "Ganaste"
         document.getElementById('Mensajes').appendChild(MensajeFinal)
-        SecSelectAttack.hidden = true 
+        secAttackDisabled()
+        ButReset.hidden = false
     }
+    
 }
 
+
+function secAttackDisabled() {
+    AtaqueFuego.disabled = true
+    AtaqueAgua.disabled = true
+    AtaqueTierra.disabled = true
+}
 
 //introducir texto ataques HTML
 function PushMesajeCombate() {
@@ -159,7 +177,7 @@ function PushMesajeCombate() {
 }
 
 //Button reset
-let ButReset = document.getElementById('Reset-but')
+
 ButReset.addEventListener('click', FunButReset)
 function FunButReset() {
     window.location.reload()
